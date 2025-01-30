@@ -3,10 +3,10 @@ import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
 
 import com.globant.model.CurrencyExchangeRequest;
-import com.globant.service.CurrencyExchangeService;
 import com.globant.service.ICurrencyExchangeService;
 
 import io.smallrye.mutiny.Uni;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
@@ -26,6 +26,7 @@ public class CurrencyExchangeResource {
     @POST
     @Retry(maxRetries = 3)
     @Timeout(value = 2, unit = java.time.temporal.ChronoUnit.SECONDS)
+    @RolesAllowed("Admin")
     public Uni<Response> convertCurrency(CurrencyExchangeRequest request) {
         return currencyExchangeService.convertCurrency(request)
                 .onItem().transform(response -> Response.ok(response).build())
