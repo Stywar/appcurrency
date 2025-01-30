@@ -30,8 +30,7 @@ public class CurrencyExchangeService implements ICurrencyExchangeService {
 
     
     @WithSession
-    @CacheResult(cacheName = "currency-cache")
-    //@CircuitBreaker(requestVolumeThreshold = 4, failureRatio = 0.5, delay = 5000)
+    @CacheResult(cacheName = "currency-cache")   
     @Override    
     public Uni<CurrencyExchangeResponse> convertCurrency(@CacheKey CurrencyExchangeRequest request) {
         LOG.infof("Processing currency exchange for: %s -> %s, Amount: %s", 
