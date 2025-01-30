@@ -28,7 +28,7 @@ COPY --from=build /build/target/quarkus-app/quarkus/ /deployments/quarkus/
 
 # Expone el puerto 8080 para que la aplicación sea accesible
 EXPOSE 8080
-
+ENV QUARKUS_PROFILE=docker
 # Usar un usuario no privilegiado
 USER 185
 
