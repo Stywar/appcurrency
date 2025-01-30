@@ -7,9 +7,9 @@ public class CurrencyExchangeRequest {
 
     private BigDecimal amount;
     private String sourceCurrency;
-    private String targetCurrency;
+    private String targetCurrency;     
 
-    public BigDecimal getAmount() {
+	public BigDecimal getAmount() {
         return amount;
     }
 
